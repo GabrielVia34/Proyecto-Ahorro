@@ -6,9 +6,9 @@ namespace AppAhorro.Backend.Data
 {
     public static class ConexionBD
     {
-        private static readonly string InformacionBancaria = "ahorro_data.db";
+        private static readonly string InformacionBancaria = "ahorro_data2.db";
             private static readonly string CadenaConexion = $"Data Source={InformacionBancaria}";
-                private static SqliteConnection ObtenerConexion()
+                public static SqliteConnection ObtenerConexion()
         {
             
             return new SqliteConnection(CadenaConexion);
@@ -16,7 +16,7 @@ namespace AppAhorro.Backend.Data
         
         public static void InicializarBasedeDatos()
         {
-            if(File.Exists(InformacionBancaria))
+            if(!File.Exists(InformacionBancaria))
             {
                 using (var conexion = ObtenerConexion())
                 {
